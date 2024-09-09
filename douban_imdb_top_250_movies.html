@@ -1,0 +1,884 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Douban Top 250 Movies with IMDb Ratings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.8em;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background-color: #fff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 18px 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #34495e;
+            color: #fff;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        th:hover {
+            background-color: #2c3e50;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        tr:hover {
+            background-color: #e8f4f8;
+        }
+        th.sort-asc::after {
+            content: " ▲";
+            font-size: 0.8em;
+        }
+        th.sort-desc::after {
+            content: " ▼";
+            font-size: 0.8em;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+        .rank {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        .rating {
+            font-weight: 600;
+            color: #f39c12;
+        }
+        .movie-title {
+            font-weight: 600;
+            color: #34495e;
+        }
+        @media (max-width: 768px) {
+            table {
+                font-size: 14px;
+            }
+            th, td {
+                padding: 12px 10px;
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Douban Top 250 Movies with IMDb Ratings</h1>
+        <table id="movie-table">
+            <thead>
+                <tr>
+                    <th data-sort-method="number">Douban Rank</th>
+                    <th>Chinese Title</th>
+                    <th>English Title</th>
+                    <th data-sort-method="custom-number">Douban Rating</th>
+                    <th data-sort-method="custom-number">Douban Ratings</th>
+                    <th data-sort-method="custom-number">IMDb Rating</th>
+                    <th data-sort-method="custom-number">IMDb Rank</th>
+                </tr>
+            </thead>
+            <tbody>
+
+        <tr>
+            <td class="rank">1</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1292052/" target="_blank">肖申克的救赎</a></td>
+            <td>The Shawshank Redemption</td>
+            <td class="rating">9.7</td>
+            <td>3059776</td>
+            <td class="rating">9.3 (2.9M)</td>
+            <td><a href="https://www.imdb.com/title/tt0111161/?ref_=chttp_t_1" target="_blank">1</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">2</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1291546/" target="_blank">霸王别姬</a></td>
+            <td>N/A</td>
+            <td class="rating">9.6</td>
+            <td>2259806</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">3</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1292720/" target="_blank">阿甘正传</a></td>
+            <td>Forrest Gump</td>
+            <td class="rating">9.5</td>
+            <td>2278882</td>
+            <td class="rating">8.8 (2.3M)</td>
+            <td><a href="https://www.imdb.com/title/tt0109830/?ref_=chttp_t_11" target="_blank">11</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">4</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1292722/" target="_blank">泰坦尼克号</a></td>
+            <td>Titanic</td>
+            <td class="rating">9.5</td>
+            <td>2318761</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">5</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1291561/" target="_blank">千与千寻</a></td>
+            <td>千と千尋の神隠し</td>
+            <td class="rating">9.4</td>
+            <td>2367651</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">6</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1295644/" target="_blank">这个杀手不太冷</a></td>
+            <td>Léon</td>
+            <td class="rating">9.4</td>
+            <td>2401284</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">7</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1292063/" target="_blank">美丽人生</a></td>
+            <td>La vita è bella</td>
+            <td class="rating">9.5</td>
+            <td>1393492</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">8</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1889243/" target="_blank">星际穿越</a></td>
+            <td>Interstellar</td>
+            <td class="rating">9.4</td>
+            <td>1988530</td>
+            <td class="rating">8.7 (2.2M)</td>
+            <td><a href="https://www.imdb.com/title/tt0816692/?ref_=chttp_t_19" target="_blank">19</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">9</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/3541415/" target="_blank">盗梦空间</a></td>
+            <td>Inception</td>
+            <td class="rating">9.4</td>
+            <td>2180636</td>
+            <td class="rating">8.8 (2.6M)</td>
+            <td><a href="https://www.imdb.com/title/tt1375666/?ref_=chttp_t_14" target="_blank">14</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">10</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1292064/" target="_blank">楚门的世界</a></td>
+            <td>The Truman Show</td>
+            <td class="rating">9.4</td>
+            <td>1844652</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">11</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1295124/" target="_blank">辛德勒的名单</a></td>
+            <td>Schindler&#x27;s List</td>
+            <td class="rating">9.5</td>
+            <td>1178489</td>
+            <td class="rating">9.0 (1.5M)</td>
+            <td><a href="https://www.imdb.com/title/tt0108052/?ref_=chttp_t_6" target="_blank">6</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">12</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/3011091/" target="_blank">忠犬八公的故事</a></td>
+            <td>Hachi: A Dog&#x27;s Tale</td>
+            <td class="rating">9.4</td>
+            <td>1459600</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">13</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1292001/" target="_blank">海上钢琴师</a></td>
+            <td>La leggenda del pianista sull&#x27;oceano</td>
+            <td class="rating">9.3</td>
+            <td>1760904</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">14</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/3793023/" target="_blank">三傻大闹宝莱坞</a></td>
+            <td>3 Idiots</td>
+            <td class="rating">9.2</td>
+            <td>1952897</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">15</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1291549/" target="_blank">放牛班的春天</a></td>
+            <td>Les choristes</td>
+            <td class="rating">9.3</td>
+            <td>1384133</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">16</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/2131459/" target="_blank">机器人总动员</a></td>
+            <td>WALL·E</td>
+            <td class="rating">9.3</td>
+            <td>1389573</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">17</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/25662329/" target="_blank">疯狂动物城</a></td>
+            <td>Zootopia</td>
+            <td class="rating">9.2</td>
+            <td>2076007</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">18</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1307914/" target="_blank">无间道</a></td>
+            <td>無間道</td>
+            <td class="rating">9.3</td>
+            <td>1454045</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">19</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1296141/" target="_blank">控方证人</a></td>
+            <td>Witness for the Prosecution</td>
+            <td class="rating">9.6</td>
+            <td>629710</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">20</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1292213/" target="_blank">大话西游之大圣娶亲</a></td>
+            <td>西遊記大結局之仙履奇緣</td>
+            <td class="rating">9.2</td>
+            <td>1609754</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">21</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/5912992/" target="_blank">熔炉</a></td>
+            <td>도가니</td>
+            <td class="rating">9.3</td>
+            <td>979763</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">22</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1291841/" target="_blank">教父</a></td>
+            <td>The Godfather</td>
+            <td class="rating">9.3</td>
+            <td>1028380</td>
+            <td class="rating">9.2 (2M)</td>
+            <td><a href="https://www.imdb.com/title/tt0068646/?ref_=chttp_t_2" target="_blank">2</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">23</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/6786002/" target="_blank">触不可及</a></td>
+            <td>Intouchables</td>
+            <td class="rating">9.3</td>
+            <td>1195887</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">24</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1849031/" target="_blank">当幸福来敲门</a></td>
+            <td>The Pursuit of Happyness</td>
+            <td class="rating">9.2</td>
+            <td>1595201</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">25</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/20495023/" target="_blank">寻梦环游记</a></td>
+            <td>Coco</td>
+            <td class="rating">9.1</td>
+            <td>1804349</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">26</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1293172/" target="_blank">末代皇帝</a></td>
+            <td>The Last Emperor</td>
+            <td class="rating">9.3</td>
+            <td>950283</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">27</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1291560/" target="_blank">龙猫</a></td>
+            <td>となりのトトロ</td>
+            <td class="rating">9.2</td>
+            <td>1332803</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">28</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/3319755/" target="_blank">怦然心动</a></td>
+            <td>Flipped</td>
+            <td class="rating">9.1</td>
+            <td>1930642</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">29</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1295038/" target="_blank">哈利·波特与魔法石</a></td>
+            <td>Harry Potter and the Sorcerer&#x27;s Stone</td>
+            <td class="rating">9.2</td>
+            <td>1280912</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">30</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1292365/" target="_blank">活着</a></td>
+            <td>N/A</td>
+            <td class="rating">9.3</td>
+            <td>903430</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">31</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1851857/" target="_blank">蝙蝠侠：黑暗骑士</a></td>
+            <td>The Dark Knight</td>
+            <td class="rating">9.2</td>
+            <td>1122522</td>
+            <td class="rating">9.0 (2.9M)</td>
+            <td><a href="https://www.imdb.com/title/tt0468569/?ref_=chttp_t_3" target="_blank">3</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">32</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1291552/" target="_blank">指环王3：王者无敌</a></td>
+            <td>The Lord of the Rings: The Return of the King</td>
+            <td class="rating">9.3</td>
+            <td>851254</td>
+            <td class="rating">9.0 (2M)</td>
+            <td><a href="https://www.imdb.com/title/tt0167260/?ref_=chttp_t_7" target="_blank">7</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">33</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/26752088/" target="_blank">我不是药神</a></td>
+            <td>N/A</td>
+            <td class="rating">9.0</td>
+            <td>2215949</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">34</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1300267/" target="_blank">乱世佳人</a></td>
+            <td>Gone with the Wind</td>
+            <td class="rating">9.3</td>
+            <td>733238</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">35</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/2129039/" target="_blank">飞屋环游记</a></td>
+            <td>Up</td>
+            <td class="rating">9.1</td>
+            <td>1402169</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">36</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/21937452/" target="_blank">素媛</a></td>
+            <td>소원</td>
+            <td class="rating">9.3</td>
+            <td>727988</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">37</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1308807/" target="_blank">哈尔的移动城堡</a></td>
+            <td>ハウルの動く城</td>
+            <td class="rating">9.1</td>
+            <td>1167311</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">38</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1293182/" target="_blank">十二怒汉</a></td>
+            <td>12 Angry Men</td>
+            <td class="rating">9.4</td>
+            <td>530768</td>
+            <td class="rating">9.0 (882K)</td>
+            <td><a href="https://www.imdb.com/title/tt0050083/?ref_=chttp_t_5" target="_blank">5</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">39</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/3742360/" target="_blank">让子弹飞</a></td>
+            <td>N/A</td>
+            <td class="rating">9.0</td>
+            <td>1797313</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">40</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/30170448/" target="_blank">何以为家</a></td>
+            <td>كفرناحوم</td>
+            <td class="rating">9.1</td>
+            <td>1101301</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">41</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/25958717/" target="_blank">海蒂和爷爷</a></td>
+            <td>Heidi</td>
+            <td class="rating">9.3</td>
+            <td>688206</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">42</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1305487/" target="_blank">猫鼠游戏</a></td>
+            <td>Catch Me If You Can</td>
+            <td class="rating">9.1</td>
+            <td>1108296</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">43</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/26387939/" target="_blank">摔跤吧！爸爸</a></td>
+            <td>Dangal</td>
+            <td class="rating">9.0</td>
+            <td>1646020</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">44</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1291583/" target="_blank">天空之城</a></td>
+            <td>天空の城ラピュタ</td>
+            <td class="rating">9.2</td>
+            <td>940749</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">45</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1291858/" target="_blank">鬼子来了</a></td>
+            <td>N/A</td>
+            <td class="rating">9.3</td>
+            <td>665354</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">46</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1929463/" target="_blank">少年派的奇幻漂流</a></td>
+            <td>Life of Pi</td>
+            <td class="rating">9.1</td>
+            <td>1412812</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">47</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1296736/" target="_blank">钢琴家</a></td>
+            <td>The Pianist</td>
+            <td class="rating">9.3</td>
+            <td>690732</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">48</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1291572/" target="_blank">指环王2：双塔奇兵</a></td>
+            <td>The Lord of the Rings: The Two Towers</td>
+            <td class="rating">9.2</td>
+            <td>799886</td>
+            <td class="rating">8.8 (1.8M)</td>
+            <td><a href="https://www.imdb.com/title/tt0167261/?ref_=chttp_t_12" target="_blank">12</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">49</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1299398/" target="_blank">大话西游之月光宝盒</a></td>
+            <td>西遊記第壹佰零壹回之月光寶盒</td>
+            <td class="rating">9.0</td>
+            <td>1282355</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">50</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1298624/" target="_blank">闻香识女人</a></td>
+            <td>Scent of a Woman</td>
+            <td class="rating">9.1</td>
+            <td>947577</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">51</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1291548/" target="_blank">死亡诗社</a></td>
+            <td>Dead Poets Society</td>
+            <td class="rating">9.2</td>
+            <td>792461</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">52</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/27060077/" target="_blank">绿皮书</a></td>
+            <td>Green Book</td>
+            <td class="rating">8.9</td>
+            <td>1755532</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">53</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1418019/" target="_blank">大闹天宫</a></td>
+            <td>N/A</td>
+            <td class="rating">9.4</td>
+            <td>469872</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">54</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1293839/" target="_blank">罗马假日</a></td>
+            <td>Roman Holiday</td>
+            <td class="rating">9.1</td>
+            <td>993510</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">55</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1291843/" target="_blank">黑客帝国</a></td>
+            <td>The Matrix</td>
+            <td class="rating">9.1</td>
+            <td>885673</td>
+            <td class="rating">8.7 (2.1M)</td>
+            <td><a href="https://www.imdb.com/title/tt0133093/?ref_=chttp_t_16" target="_blank">16</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">56</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1291571/" target="_blank">指环王1：护戒使者</a></td>
+            <td>The Lord of the Rings: The Fellowship of the Ring</td>
+            <td class="rating">9.1</td>
+            <td>897563</td>
+            <td class="rating">8.9 (2M)</td>
+            <td><a href="https://www.imdb.com/title/tt0120737/?ref_=chttp_t_9" target="_blank">9</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">57</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1291828/" target="_blank">天堂电影院</a></td>
+            <td>Nuovo Cinema Paradiso</td>
+            <td class="rating">9.2</td>
+            <td>707343</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">58</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1299131/" target="_blank">教父2</a></td>
+            <td>The Godfather: Part II</td>
+            <td class="rating">9.3</td>
+            <td>590528</td>
+            <td class="rating">9.0 (1.4M)</td>
+            <td><a href="https://www.imdb.com/title/tt0071562/?ref_=chttp_t_4" target="_blank">4</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">59</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1301753/" target="_blank">狮子王</a></td>
+            <td>The Lion King</td>
+            <td class="rating">9.1</td>
+            <td>897530</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">60</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/21937445/" target="_blank">辩护人</a></td>
+            <td>변호인</td>
+            <td class="rating">9.2</td>
+            <td>622688</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">61</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1291818/" target="_blank">饮食男女</a></td>
+            <td>飲食男女</td>
+            <td class="rating">9.2</td>
+            <td>663737</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">62</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1292000/" target="_blank">搏击俱乐部</a></td>
+            <td>Fight Club</td>
+            <td class="rating">9.0</td>
+            <td>900716</td>
+            <td class="rating">8.8 (2.4M)</td>
+            <td><a href="https://www.imdb.com/title/tt0137523/?ref_=chttp_t_13" target="_blank">13</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">63</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1485260/" target="_blank">本杰明·巴顿奇事</a></td>
+            <td>The Curious Case of Benjamin Button</td>
+            <td class="rating">9.0</td>
+            <td>1040207</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">64</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1306029/" target="_blank">美丽心灵</a></td>
+            <td>A Beautiful Mind</td>
+            <td class="rating">9.1</td>
+            <td>810122</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">65</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/3008247/" target="_blank">穿条纹睡衣的男孩</a></td>
+            <td>The Boy in the Striped Pajamas</td>
+            <td class="rating">9.2</td>
+            <td>602371</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">66</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1900841/" target="_blank">窃听风暴</a></td>
+            <td>Das Leben der Anderen</td>
+            <td class="rating">9.2</td>
+            <td>597222</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">67</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1292220/" target="_blank">情书</a></td>
+            <td>Love Letter</td>
+            <td class="rating">8.9</td>
+            <td>1193878</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">68</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1293350/" target="_blank">两杆大烟枪</a></td>
+            <td>Lock, Stock and Two Smoking Barrels</td>
+            <td class="rating">9.1</td>
+            <td>631949</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">69</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1294408/" target="_blank">音乐之声</a></td>
+            <td>The Sound of Music</td>
+            <td class="rating">9.1</td>
+            <td>639347</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">70</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1292402/" target="_blank">西西里的美丽传说</a></td>
+            <td>Malèna</td>
+            <td class="rating">8.9</td>
+            <td>1031673</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">71</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/26580232/" target="_blank">看不见的客人</a></td>
+            <td>Contratiempo</td>
+            <td class="rating">8.8</td>
+            <td>1351108</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">72</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/3011235/" target="_blank">哈利·波特与死亡圣器(下)</a></td>
+            <td>Harry Potter and the Deathly Hallows: Part 2</td>
+            <td class="rating">9.0</td>
+            <td>887983</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">73</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1652587/" target="_blank">阿凡达</a></td>
+            <td>Avatar</td>
+            <td class="rating">8.8</td>
+            <td>1490214</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">74</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1292849/" target="_blank">拯救大兵瑞恩</a></td>
+            <td>Saving Private Ryan</td>
+            <td class="rating">9.1</td>
+            <td>682535</td>
+            <td class="rating">8.6 (1.5M)</td>
+            <td><a href="https://www.imdb.com/title/tt0120815/?ref_=chttp_t_24" target="_blank">24</a></td>
+        </tr>
+    
+        <tr>
+            <td class="rank">75</td>
+            <td class="movie-title"><a href="https://movie.douban.com/subject/1291543/" target="_blank">功夫</a></td>
+            <td>N/A</td>
+            <td class="rating">8.8</td>
+            <td>1224249</td>
+            <td class="rating">N/A</td>
+            <td><a href="#" target="_blank">N/A</a></td>
+        </tr>
+    
+            </tbody>
+        </table>
+    </div>
+    <script>
+        Tablesort.extend('custom-number', function(item) {
+            return item !== 'N/A';
+        }, function(a, b) {
+            a = a === 'N/A' ? Infinity : parseFloat(a);
+            b = b === 'N/A' ? Infinity : parseFloat(b);
+            return a - b;
+        });
+
+        new Tablesort(document.getElementById('movie-table'));
+    </script>
+</body>
+</html>
